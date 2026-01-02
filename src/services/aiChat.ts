@@ -3,7 +3,7 @@
 
 const API_URL =
   import.meta.env.VITE_AI_API_URL ||
-  "https://mfzpal29hf.execute-api.us-east-2.amazonaws.com/default/personal-assistant-chatgpt";
+  "https://he6dj36bkh.execute-api.us-east-2.amazonaws.com/prod";
 
 export interface ChatMessage {
   role: "user" | "assistant";
@@ -47,19 +47,8 @@ export async function sendMessage(
 
     const data = await response.json();
 
-    // The API returns { headers: {...}, body: "{\"response\": \"...\"}" }
-    // The body is a JSON string that needs to be parsed
-    let messageContent = "";
-
-    if (data.body) {
-      // Parse the body JSON string
-      const bodyData = JSON.parse(data.body);
-      messageContent =
-        bodyData.response || bodyData.message || bodyData.answer || "";
-    } else {
-      // Fallback for direct response format
-      messageContent = data.response || data.message || data.answer || "";
-    }
+    // The API Gateway with AWS_PROXY returns { response: "..." } directly
+    const messageContent = data.response || data.message || data.answer || "";
 
     return {
       message: messageContent,
