@@ -67,13 +67,82 @@ export function Hero() {
           </p>
         </div>
 
+        {/* Feature Highlights - AI Chat & Contact */}
+        <div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* AI Chat Feature */}
+          <div className="relative group">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+            <div className="relative bg-ide-sidebar border border-ide-border rounded-lg p-4 hover:border-blue-500/50 transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">🤖</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-ide-text font-semibold text-sm mb-1 flex items-center gap-2">
+                    AI Assistant
+                    <span className="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded-full border border-blue-500/30">
+                      NEW
+                    </span>
+                  </h3>
+                  <p className="text-ide-text-muted text-xs mb-3">
+                    Chat with my AI assistant to learn about my experience, skills, and projects
+                  </p>
+                  <button
+                    onClick={() => {
+                      // Trigger AI chat - this will be handled by the parent component
+                      const event = new CustomEvent('openAIChat');
+                      window.dispatchEvent(event);
+                    }}
+                    className="btn btn-primary text-xs py-1.5 px-3 flex items-center gap-2"
+                  >
+                    <span>💬</span>
+                    <span>Start Chat</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Feature */}
+          <div className="relative group">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+            <div className="relative bg-ide-sidebar border border-ide-border rounded-lg p-4 hover:border-green-500/50 transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">📧</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-ide-text font-semibold text-sm mb-1 flex items-center gap-2">
+                    Get in Touch
+                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                  </h3>
+                  <p className="text-ide-text-muted text-xs mb-3">
+                    Send me a message directly through the contact form
+                  </p>
+                  <button
+                    onClick={() => {
+                      // Open contact tab
+                      const event = new CustomEvent('openContactTab');
+                      window.dispatchEvent(event);
+                    }}
+                    className="btn btn-secondary text-xs py-1.5 px-3 flex items-center gap-2 hover:bg-green-500/20 hover:border-green-500/50"
+                  >
+                    <span>✉️</span>
+                    <span>Contact Me</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Quick links */}
         <div className="mt-6 md:mt-8 flex flex-wrap gap-3 md:gap-4">
           <a
             href={profile.personal.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary flex items-center gap-2 text-sm md:text-base"
+            className="btn btn-secondary flex items-center gap-2 text-sm md:text-base"
           >
             <span>🐙</span>
             <span>GitHub</span>
@@ -92,7 +161,7 @@ export function Hero() {
             className="btn btn-secondary flex items-center gap-2 text-sm md:text-base"
           >
             <span>📧</span>
-            <span>Contact</span>
+            <span>Email</span>
           </a>
         </div>
 

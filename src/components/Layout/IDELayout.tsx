@@ -167,6 +167,15 @@ export function IDELayout() {
     }
   }, [isMobileMenuOpen]);
 
+  // Listen for AI chat open event from Hero component
+  useEffect(() => {
+    const handleOpenAIChat = () => {
+      setIsAIChatOpen(true);
+    };
+    window.addEventListener('openAIChat', handleOpenAIChat);
+    return () => window.removeEventListener('openAIChat', handleOpenAIChat);
+  }, []);
+
   const openTab = useCallback(
     (item: FileTreeItem) => {
       if (item.type === "file" && item.component) {
@@ -190,6 +199,22 @@ export function IDELayout() {
     },
     [tabs, isMobile]
   );
+
+  // Listen for contact tab open event from Hero component
+  useEffect(() => {
+    const handleOpenContactTab = () => {
+      // Find the contact file in the tree
+      const contactFile = fileTree
+        .find(folder => folder.id === 'profile')
+        ?.children?.find(file => file.id === 'contact');
+      
+      if (contactFile) {
+        openTab(contactFile);
+      }
+    };
+    window.addEventListener('openContactTab', handleOpenContactTab);
+    return () => window.removeEventListener('openContactTab', handleOpenContactTab);
+  }, [openTab]);
 
   const closeTab = useCallback(
     (tabId: string) => {

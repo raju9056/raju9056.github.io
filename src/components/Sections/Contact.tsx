@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { profile } from "../../data/profile";
+import { submitContactForm } from "../../services/contactService";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -9,24 +10,28 @@ export function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    // In production, you would send this to a backend or email service
-    console.log("Form submitted:", formData);
+    // Submit form using Web3Forms service
+    const result = await submitContactForm(formData);
 
     setIsSubmitting(false);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+
+    if (result.success) {
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      setError(result.message);
+    }
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-1 md:px-0">
+    <div className="max-w-4xl mx-auto px-1 md:px-0" data-section="contact">
       {/* File header */}
       <div className="text-ide-text-muted text-xs md:text-sm mb-3 md:mb-4">
         <span className="syntax-comment">{`// contact.sh - Get in touch`}</span>
@@ -147,6 +152,11 @@ export function Contact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+              {error && (
+                <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
+                  {error}
+                </div>
+              )}
               <div>
                 <label className="block text-xs md:text-sm text-ide-text-muted mb-1.5 md:mb-2">
                   <span className="syntax-property">name</span>

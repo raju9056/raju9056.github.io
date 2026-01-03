@@ -13,7 +13,7 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
     {
       role: "assistant",
       content:
-        "Hi! I'm Raju's personal AI assistant. Ask me any questions, and you'll get very realistic answers as possible that you would get from Raju himself. What would you like to know?",
+        "Hi! I'm Raju's AI assistant. Ask me anything about his experience, skills, or projects, and I'll provide answers just as he would. What would you like to know?",
       timestamp: new Date(),
     },
   ]);
