@@ -139,7 +139,7 @@ export async function sendMessage(
  */
 export function getFallbackResponse(question: string): string {
   const lowerQuestion = question.toLowerCase();
-  const { personal, summary, experience, projects, education } = profile;
+  const { personal, experience, projects } = profile;
 
   // Experience questions
   if (
