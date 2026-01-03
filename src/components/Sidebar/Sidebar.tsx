@@ -23,9 +23,7 @@ export function Sidebar({
 }: SidebarProps) {
   return (
     <div
-      className={`bg-ide-sidebar border-r border-ide-border flex flex-col ${
-        isMobile ? "h-full" : ""
-      }`}
+      className={`bg-ide-sidebar border-r border-ide-border flex flex-col h-full`}
       style={
         isMobile
           ? { width: "100%" }

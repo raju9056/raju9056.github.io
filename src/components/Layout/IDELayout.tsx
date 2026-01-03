@@ -272,7 +272,7 @@ export function IDELayout() {
             className={`${
               isMobile
                 ? "fixed left-0 top-0 bottom-0 z-50 w-64 animate-slide-in-left"
-                : ""
+                : "h-full"
             }`}
           >
             <Sidebar
