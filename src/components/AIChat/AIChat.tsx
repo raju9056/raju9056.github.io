@@ -1,22 +1,25 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { sendMessage, type ChatMessage } from "../../services/aiChat";
+import { sendMessage, getFallbackResponse, type ChatMessage } from "../../services/aiChat";
 
 interface AIChatProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+const MAX_MESSAGES_PER_SESSION = 5;
+
 export function AIChat({ isOpen, onClose }: AIChatProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
       content:
-        "Hi! I'm Raju's personal assistant. Ask me any questions, and you'll get very realistic answers as possible that you would get from Raju himself. What would you like to know?",
+        "Hi! I'm Raju's personal AI assistant. Ask me any questions, and you'll get very realistic answers as possible that you would get from Raju himself. What would you like to know?",
       timestamp: new Date(),
     },
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [userMessageCount, setUserMessageCount] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -46,7 +49,39 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
     setIsLoading(true);
 
     try {
-      const response = await sendMessage(input.trim(), messages);
+      let response;
+      
+      // Use real AI for first 5 messages, then switch to fallback
+      if (userMessageCount < MAX_MESSAGES_PER_SESSION) {
+        response = await sendMessage(input.trim(), messages);
+        setUserMessageCount((prev) => prev + 1);
+        
+        // Show limit notification after the 5th AI response
+        if (userMessageCount + 1 === MAX_MESSAGES_PER_SESSION) {
+          const assistantMessage: ChatMessage = {
+            role: "assistant",
+            content: response.message,
+            timestamp: new Date(),
+          };
+          setMessages((prev) => [...prev, assistantMessage]);
+          
+          const limitMessage: ChatMessage = {
+            role: "assistant",
+            content:
+              "You've reached the limit of 5 AI-powered responses. I'll continue answering your questions using my built-in knowledge base. For the best experience, please refresh the page to start a new AI session.",
+            timestamp: new Date(),
+          };
+          setMessages((prev) => [...prev, limitMessage]);
+          setIsLoading(false);
+          return;
+        }
+      } else {
+        // Use fallback responses after limit
+        response = {
+          message: getFallbackResponse(input.trim()),
+          success: true,
+        };
+      }
 
       const assistantMessage: ChatMessage = {
         role: "assistant",
@@ -66,7 +101,7 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
     } finally {
       setIsLoading(false);
     }
-  }, [input, isLoading, messages]);
+  }, [input, isLoading, messages, userMessageCount]);
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -234,6 +269,27 @@ export function AIChat({ isOpen, onClose }: AIChatProps) {
                 />
               </svg>
             </button>
+          </div>
+          <div className="mt-2 flex justify-between items-center">
+            <p className="text-[#606060] text-xs">
+              {userMessageCount >= MAX_MESSAGES_PER_SESSION ? (
+                <span className="text-yellow-500">
+                  Using fallback mode (AI limit reached)
+                </span>
+              ) : (
+                <span>
+                  AI responses: {userMessageCount}/{MAX_MESSAGES_PER_SESSION}
+                </span>
+              )}
+            </p>
+            {userMessageCount >= MAX_MESSAGES_PER_SESSION && (
+              <button
+                onClick={() => window.location.reload()}
+                className="text-blue-400 hover:text-blue-300 text-xs underline"
+              >
+                Refresh for AI mode
+              </button>
+            )}
           </div>
         </div>
       </div>
