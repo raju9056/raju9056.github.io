@@ -81,12 +81,20 @@ export const profile: Profile = {
     availableForWork: true,
   },
 
-  summary: `Data & Cloud Engineer with 6+ years of experience designing, developing, and optimizing scalable, data-driven solutions in cloud environments. Strong expertise in Azure (Data Factory, Databricks, EventHub, ADLS, Functions), AWS, and SQL-based analytics. Proven record implementing ETL/ELT pipelines, data lakes, and real-time streaming systems to enable actionable insights. Experienced in Python, Spark, and DevOps (Azure DevOps, GitLab CI/CD) with focus on data quality, governance, and operational excellence.`,
+  summary: `Data & Cloud Engineer and Full Stack Developer with 6+ years of experience designing, developing, and optimizing scalable, data-driven solutions in cloud environments. Strong expertise in Azure (Data Factory, Databricks, EventHub, ADLS, Functions), AWS, and SQL-based analytics. Proficient in full-stack development with JavaScript, React.js, Node.js, and TypeScript. Proven record implementing ETL/ELT pipelines, data lakes, real-time streaming systems, and modern web applications. Experienced in Python, Spark, and DevOps (Azure DevOps, GitLab CI/CD) with focus on data quality, governance, and operational excellence.`,
 
   skillCategories: [
     {
       category: "Languages",
-      items: ["Python", "SQL", "Java", "Scala (familiar)", "JavaScript (ES6)"],
+      items: ["Python", "JavaScript (ES6+)", "TypeScript", "SQL", "Java", "Scala (familiar)"],
+    },
+    {
+      category: "Frontend Development",
+      items: ["React.js", "Redux", "TypeScript", "HTML5", "CSS3", "Tailwind CSS", "Responsive Design"],
+    },
+    {
+      category: "Backend Development",
+      items: ["Node.js", "Express.js", "FastAPI", "Flask", "RESTful APIs", "GraphQL (familiar)"],
     },
     {
       category: "Cloud & Data Platforms",
@@ -128,10 +136,6 @@ export const profile: Profile = {
     {
       category: "BI & Visualization",
       items: ["Power BI", "Tableau", "Grafana"],
-    },
-    {
-      category: "Frontend (Familiar)",
-      items: ["React", "Redux", "TypeScript", "HTML5", "CSS3", "Tailwind CSS"],
     },
     {
       category: "Security & Governance",

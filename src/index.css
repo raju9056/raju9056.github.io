@@ -40,6 +40,15 @@
   }
 }
 
+@keyframes cursorBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 @keyframes typing {
   from {
     width: 0;
@@ -385,6 +394,35 @@ body {
   content: "█";
   animation: blink 1s step-end infinite;
   color: var(--color-ide-accent);
+}
+
+/* Typewriter animation styles */
+.typewriter-text {
+  display: inline-block;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--color-ide-accent);
+  animation: cursorBlink 1s step-end infinite;
+}
+
+.animate-cursor-blink {
+  animation: cursorBlink 1s step-end infinite;
+}
+
+/* Accessibility: Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-cursor {
+    animation: none;
+    opacity: 0;
+  }
+  
+  .animate-cursor-blink {
+    animation: none;
+    opacity: 0;
+  }
 }
 
 /* Mobile-specific animations */
