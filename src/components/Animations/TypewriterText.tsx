@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 interface TypewriterTextProps {
   texts: string[];              // Array of texts to cycle through
