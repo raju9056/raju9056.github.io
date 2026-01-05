@@ -28,7 +28,6 @@ export function TypewriterText({
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
-  const hasAnimated = useRef(false);
 
   useEffect(() => {
     // Check for reduced motion preference
