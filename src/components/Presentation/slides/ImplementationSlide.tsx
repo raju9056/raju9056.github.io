@@ -1,7 +1,60 @@
 import { motion } from 'framer-motion';
 import type { SlideProps } from '../../../types/presentation';
+import { MermaidDiagram } from '../MermaidDiagram';
 
 export function ImplementationSlide({ isActive }: SlideProps) {
+  const architectureDiagram = `
+flowchart LR
+    %% Sources
+    A[Enterprise Data Sources]
+
+    %% Ingestion
+    A --> B[Ingestion Layer]
+
+    %% Platform Boundary
+    subgraph Platform["Scalable Data Platform"]
+        direction LR
+        B
+        C[Preprocessing and Normalization]
+        D[Validation and Quality Rules]
+        E[Quality Scoring]
+        G[Trusted Data Store]
+        H[Query and Retrieval Layer]
+    end
+
+    %% Preprocessing
+    B --> C
+
+    %% Validation
+    C --> D
+
+    D -->|Valid| E
+    D -->|Invalid| F[Failure Handling]
+
+    %% Failure Paths
+    F --> F1[Retry Pipelines]
+    F --> F2[Manual Review]
+    F --> F3[Producer Feedback]
+
+    %% Trusted Data
+    E --> G
+    G --> G1[Operational Database]
+    G --> G2[Analytics / Warehouse]
+
+    %% Consumption
+    G --> H
+    H --> I[AI / ML Systems]
+    I --> J[Downstream Consumers]
+
+    %% Observability
+    B --> O[Metrics and Logs]
+    C --> O
+    D --> O
+    G --> O
+
+    O --> P[Dashboards and Alerts]
+  `;
+
   const challenges = [
     'Multimodal data (text, PDFs, images, video, sensors)',
     'Inconsistent formats and metadata',
@@ -108,11 +161,30 @@ export function ImplementationSlide({ isActive }: SlideProps) {
         </div>
       </motion.div>
 
-      {/* Tech Stack */}
+      {/* System Architecture Diagram */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isActive ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 1.4 }}
+        className="mb-8"
+      >
+        <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+          <span>🏗️</span> System Architecture:
+        </h3>
+        <div className="p-4 bg-[#1e1e1e] rounded-lg border border-[#3c3c3c] relative">
+          <MermaidDiagram id="implementation-architecture" chart={architectureDiagram} />
+          {/* Custom HTML label for Scalable Data Platform */}
+          <div className="absolute bottom-[25%] left-[13%] text-white text-sm font-semibold pointer-events-none">
+            Scalable Data Platform
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Tech Stack */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isActive ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 1.6 }}
         className="p-5 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-lg border border-green-500/30"
       >
         <h3 className="text-lg font-semibold text-white mb-4">
@@ -124,7 +196,7 @@ export function ImplementationSlide({ isActive }: SlideProps) {
               key={tech.name}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isActive ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.3, delay: 1.6 + index * 0.1 }}
+              transition={{ duration: 0.3, delay: 1.8 + index * 0.1 }}
               className="flex items-center gap-2 px-4 py-2 bg-[#2d2d2d] rounded-full border border-[#4b5563]"
             >
               <span>{tech.icon}</span>
