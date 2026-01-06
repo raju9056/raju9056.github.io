@@ -11,6 +11,7 @@ import { Skills } from "../Sections/Skills";
 import { Experience } from "../Sections/Experience";
 import { Projects } from "../Sections/Projects";
 import { Contact } from "../Sections/Contact";
+import { Presentation } from "../Presentation/Presentation";
 import { AIChat } from "../AIChat/AIChat";
 import type { Tab, FileTreeItem } from "../../types";
 
@@ -83,6 +84,21 @@ const fileTree: FileTreeItem[] = [
       },
     ],
   },
+  {
+    id: "presentations",
+    name: "PRESENTATIONS",
+    type: "folder",
+    expanded: false,
+    children: [
+      {
+        id: "apple-presentation",
+        name: "my-story.pptx",
+        type: "file",
+        icon: "📊",
+        component: "presentation",
+      },
+    ],
+  },
 ];
 
 const componentMap: Record<string, React.ComponentType> = {
@@ -92,6 +108,7 @@ const componentMap: Record<string, React.ComponentType> = {
   experience: Experience,
   projects: Projects,
   contact: Contact,
+  presentation: Presentation,
 };
 
 // Custom hook for detecting mobile viewport
