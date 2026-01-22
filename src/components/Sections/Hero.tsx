@@ -1,107 +1,87 @@
 import { profile } from "../../data/profile";
+import "../styles/hero.css";
 
 export function Hero() {
   return (
-    <div className="max-w-4xl mx-auto px-1 md:px-0">
-      {/* Main heading */}
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
-        <span className="syntax-comment"># </span>
-        <span className="text-gradient">Hello, World!</span> 👋
-      </h1>
+    <div className="hero-container">
+      {/* Animated background elements */}
+      <div className="hero-blob hero-blob-1" />
+      <div className="hero-blob hero-blob-2" />
+      <div className="hero-blob hero-blob-3" />
 
-      <div className="mt-4 md:mt-6 space-y-4">
-        <p className="text-lg md:text-xl text-ide-text">
-          I'm{" "}
-          <span className="text-ide-accent-pink font-semibold">
-            {profile.personal.name}
-          </span>
-        </p>
+      <div className="max-w-6xl mx-auto px-1 md:px-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen">
+          {/* Left side - Text content */}
+          <div className="hero-content space-y-6 md:space-y-8 order-2 lg:order-1">
+            {/* Main greeting */}
+            <div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+                <span className="syntax-comment"># </span>
+                <span className="hero-gradient-text">Hello, I'm {profile.personal.name}</span>
+              </h1>
+              <p className="text-lg md:text-2xl text-ide-accent-cyan font-light">
+                Data & Cloud Engineer
+              </p>
+            </div>
 
-        <div className="flex flex-wrap gap-2 text-xs md:text-sm">
-          <span className="badge badge-primary">Data & Cloud Engineer</span>
-          <span className="badge badge-success">6+ Years Experience</span>
-          <span className="badge badge-warning">Open to Opportunities</span>
-        </div>
+            {/* Badge showcase */}
+            <div className="flex flex-wrap gap-3">
+              <span className="hero-badge">💾 Data Engineering</span>
+              <span className="hero-badge">☁️ Cloud Architect</span>
+              <span className="hero-badge">🚀 6+ Years</span>
+            </div>
 
-        {/* Code block intro */}
-        <div className="bg-ide-sidebar rounded-lg p-3 md:p-4 mt-4 md:mt-6 border border-ide-border overflow-hidden">
-          <div className="flex items-center gap-2 mb-2 md:mb-3 text-xs text-ide-text-muted">
-            <span>📄</span>
-            <span>profile.ts</span>
-          </div>
-          <pre className="text-xs md:text-sm overflow-x-auto">
-            <code>
-              <span className="syntax-keyword">const</span>{" "}
-              <span className="syntax-variable">engineer</span>{" "}
-              <span className="text-ide-text">=</span> {"{"}
-              {"\n"} <span className="syntax-property">name</span>:{" "}
-              <span className="syntax-string">"{profile.personal.name}"</span>,
-              {"\n"} <span className="syntax-property">role</span>:{" "}
-              <span className="syntax-string">"Data & Cloud Engineer"</span>,
-              {"\n"} <span className="syntax-property">expertise</span>: [{"\n"}{" "}
-              <span className="syntax-string">"Azure & AWS"</span>,{"\n"}{" "}
-              <span className="syntax-string">"ETL/ELT Pipelines"</span>,{"\n"}{" "}
-              <span className="syntax-string">"Data Engineering"</span>,{"\n"}{" "}
-              ],
-              {"\n"} <span className="syntax-property">languages</span>: [{"\n"}{" "}
-              <span className="syntax-string">"Python"</span>,{" "}
-              <span className="syntax-string">"SQL"</span>,{" "}
-              <span className="syntax-string">"Java"</span>,{"\n"} ],
-              {"\n"} <span className="syntax-property">passion</span>:{" "}
-              <span className="syntax-string">
-                "Building scalable data solutions"
+            {/* Description */}
+            <div className="hero-description bg-ide-sidebar/50 backdrop-blur-md rounded-xl p-6 border border-ide-border/30 hover:border-ide-accent-pink/50 transition-colors duration-300">
+              <p className="text-base md:text-lg text-ide-text leading-relaxed">
+                {profile.summary}
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <a
+                href={profile.personal.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-btn hero-btn-primary group"
+              >
+                <span className="inline-block transition-transform group-hover:translate-x-1">
+                  🐙
+                </span>
+                <span>View GitHub</span>
+              </a>
+              <a
+                href={`mailto:${profile.personal.email}`}
+                className="hero-btn hero-btn-secondary group"
+              >
+                <span className="inline-block transition-transform group-hover:translate-x-1">
+                  📧
+                </span>
+                <span>Get in Touch</span>
+              </a>
+            </div>
+
+            {/* Status indicator */}
+            <div className="hero-status inline-flex items-center gap-3 px-5 py-3 bg-ide-accent-green/10 border border-ide-accent-green/30 rounded-full">
+              <span className="w-2 h-2 bg-ide-accent-green rounded-full animate-pulse" />
+              <span className="text-ide-accent-green text-sm">
+                Open to opportunities
               </span>
-              ,{"\n"}
-              {"}"};
-            </code>
-          </pre>
-        </div>
+            </div>
+          </div>
 
-        {/* Summary */}
-        <div className="mt-4 md:mt-6">
-          <h2 className="text-base md:text-lg font-semibold text-ide-text mb-2">
-            <span className="syntax-comment">## </span>About Me
-          </h2>
-          <p className="text-sm md:text-base text-ide-text-muted leading-relaxed">
-            {profile.summary}
-          </p>
-        </div>
-
-        {/* Quick links */}
-        <div className="mt-6 md:mt-8 flex flex-wrap gap-3 md:gap-4">
-          <a
-            href={profile.personal.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary flex items-center gap-2 text-sm md:text-base"
-          >
-            <span>🐙</span>
-            <span>GitHub</span>
-          </a>
-          <a
-            href={profile.personal.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-secondary flex items-center gap-2 text-sm md:text-base"
-          >
-            <span>💼</span>
-            <span>LinkedIn</span>
-          </a>
-          <a
-            href={`mailto:${profile.personal.email}`}
-            className="btn btn-secondary flex items-center gap-2 text-sm md:text-base"
-          >
-            <span>📧</span>
-            <span>Contact</span>
-          </a>
-        </div>
-
-        {/* Status indicator */}
-        <div className="mt-6 md:mt-8 inline-flex items-center gap-2 px-3 md:px-4 py-2 bg-ide-accent-green/10 border border-ide-accent-green/30 rounded-full">
-          <span className="w-2 h-2 bg-ide-accent-green rounded-full animate-pulse" />
-          <span className="text-ide-accent-green text-xs md:text-sm">
-            Available for opportunities
-          </span>
+          {/* Right side - Profile image */}
+          <div className="hero-image-wrapper order-1 lg:order-2">
+            <div className="hero-image-container">
+              <img
+                src="/profile.jpg"
+                alt={profile.personal.name}
+                className="hero-image"
+              />
+              <div className="hero-image-border" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
