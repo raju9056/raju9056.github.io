@@ -75,7 +75,7 @@ export function Hero() {
           <div className="hero-image-wrapper order-1 lg:order-2">
             <div className="hero-image-container">
               <img
-                src="/profile.jpg"
+                src="/profile.jpeg"
                 alt={profile.personal.name}
                 className="hero-image"
               />
