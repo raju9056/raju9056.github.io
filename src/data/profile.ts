@@ -53,6 +53,7 @@ export interface Certification {
 export interface Profile {
   personal: {
     name: string;
+    title: string;
     location: string;
     email: string;
     phone: string;
@@ -73,6 +74,7 @@ export interface Profile {
 export const profile: Profile = {
   personal: {
     name: "Raju Yallappa",
+    title: "Senior Software Engineer | AI Engineer | Data Scientist",
     location: "USA (Open to Relocation)",
     email: "rajuyallappa9056@gmail.com",
     phone: "316259xxxx",
@@ -81,7 +83,7 @@ export const profile: Profile = {
     availableForWork: true,
   },
 
-  summary: `Data & Cloud Engineer with 6+ years of experience designing, developing, and optimizing scalable, data-driven solutions in cloud environments. Strong expertise in Azure (Data Factory, Databricks, EventHub, ADLS, Functions), AWS, and SQL-based analytics. Proven record implementing ETL/ELT pipelines, data lakes, and real-time streaming systems to enable actionable insights. Experienced in Python, Spark, and DevOps (Azure DevOps, GitLab CI/CD) with focus on data quality, governance, and operational excellence.`,
+  summary: `Senior Software Engineer and Data Scientist with 6+ years building intelligent, scalable systems that bridge software engineering excellence with advanced data solutions. Expertise spans full-stack development, LLM/AI applications, enterprise data platforms (Azure, AWS), and cloud architecture. Passionate about creating elegant solutions to complex problems using cutting-edge technologies in AI, machine learning, and distributed systems.`,
 
   skillCategories: [
     {

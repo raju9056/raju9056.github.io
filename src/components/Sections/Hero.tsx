@@ -2,84 +2,146 @@ import { profile } from "../../data/profile";
 import "../styles/hero.css";
 
 export function Hero() {
+  const titles = profile.personal.title.split(" | ");
+
+  const handleAIChatClick = () => {
+    // Dispatch custom event to open AI Chat
+    window.dispatchEvent(new CustomEvent("openAIChat"));
+  };
+
   return (
     <div className="hero-container">
-      {/* Animated background elements */}
-      <div className="hero-blob hero-blob-1" />
-      <div className="hero-blob hero-blob-2" />
-      <div className="hero-blob hero-blob-3" />
+      {/* Enhanced animated background with floating particles */}
+      <div className="hero-background">
+        <div className="hero-blob hero-blob-1" />
+        <div className="hero-blob hero-blob-2" />
+        <div className="hero-blob hero-blob-3" />
+        <div className="floating-particles">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className={`particle particle-${i}`} />
+          ))}
+        </div>
+      </div>
 
-      <div className="max-w-6xl mx-auto px-1 md:px-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen">
-          {/* Left side - Text content */}
-          <div className="hero-content space-y-6 md:space-y-8 order-2 lg:order-1">
-            {/* Main greeting */}
-            <div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-                <span className="syntax-comment"># </span>
-                <span className="hero-gradient-text">Hello, I'm {profile.personal.name}</span>
-              </h1>
-              <p className="text-lg md:text-2xl text-ide-accent-cyan font-light">
-                Data & Cloud Engineer
-              </p>
+      <div className="max-w-7xl mx-auto px-4 md:px-0">
+        <div className="min-h-screen flex flex-col justify-center">
+          {/* Top Section: Name/Title + Profile Picture */}
+          <div className="hero-top-section">
+            <div className="hero-top-left">
+              {/* Code comment style intro */}
+              <div className="hero-intro">
+                <p className="syntax-comment">// Senior Developer & AI Specialist</p>
+                <p className="syntax-comment">const portfolio = {`{`}</p>
+              </div>
+
+              {/* Main headline with typing animation */}
+              <div className="hero-headline-wrapper">
+                <h1 className="hero-headline">
+                  {profile.personal.name.split(" ")[0]}
+                  <span className="hero-highlight">.</span>
+                </h1>
+                <p className="hero-subheading">
+                  I build intelligent systems &<br />
+                  solve complex problems with code
+                </p>
+              </div>
             </div>
 
-            {/* Badge showcase */}
-            <div className="flex flex-wrap gap-3">
-              <span className="hero-badge">💾 Data Engineering</span>
-              <span className="hero-badge">☁️ Cloud Architect</span>
-              <span className="hero-badge">🚀 6+ Years</span>
-            </div>
-
-            {/* Description */}
-            <div className="hero-description bg-ide-sidebar/50 backdrop-blur-md rounded-xl p-6 border border-ide-border/30 hover:border-ide-accent-pink/50 transition-colors duration-300">
-              <p className="text-base md:text-lg text-ide-text leading-relaxed">
-                {profile.summary}
-              </p>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <a
-                href={profile.personal.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hero-btn hero-btn-primary group"
-              >
-                <span className="inline-block transition-transform group-hover:translate-x-1">
-                  🐙
-                </span>
-                <span>View GitHub</span>
-              </a>
-              <a
-                href={`mailto:${profile.personal.email}`}
-                className="hero-btn hero-btn-secondary group"
-              >
-                <span className="inline-block transition-transform group-hover:translate-x-1">
-                  📧
-                </span>
-                <span>Get in Touch</span>
-              </a>
-            </div>
-
-            {/* Status indicator */}
-            <div className="hero-status inline-flex items-center gap-3 px-5 py-3 bg-ide-accent-green/10 border border-ide-accent-green/30 rounded-full">
-              <span className="w-2 h-2 bg-ide-accent-green rounded-full animate-pulse" />
-              <span className="text-ide-accent-green text-sm">
-                Open to opportunities
-              </span>
+            {/* Profile Picture - Right Side */}
+            <div className="hero-top-right">
+              <div className="hero-image-wrapper-new">
+                <div className="image-frame">
+                  <img
+                    src="/profile.jpeg"
+                    alt={profile.personal.name}
+                    className="hero-profile-image"
+                  />
+                  <div className="image-glow" />
+                  <div className="image-frame-border" />
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right side - Profile image */}
-          <div className="hero-image-wrapper order-1 lg:order-2">
-            <div className="hero-image-container">
-              <img
-                src="/profile.jpeg"
-                alt={profile.personal.name}
-                className="hero-image"
-              />
-              <div className="hero-image-border" />
+          {/* Main Content */}
+          <div className="hero-content-wrapper">
+            {/* Left content */}
+            <div className="hero-left-content">
+
+              {/* Dynamic role badges */}
+              <div className="hero-roles-container">
+                {titles.map((title, index) => (
+                  <span key={index} className="hero-role-badge">
+                    {title.trim()}
+                  </span>
+                ))}
+              </div>
+
+              {/* Description with enhanced styling */}
+              <div className="hero-description-new">
+                <p className="text-base md:text-lg text-ide-text leading-relaxed">
+                  {profile.summary}
+                </p>
+              </div>
+
+              {/* Specialty areas */}
+              <div className="hero-specialties">
+                <div className="specialty-item">
+                  <span className="specialty-icon">🤖</span>
+                  <span>AI & LLMs</span>
+                </div>
+                <div className="specialty-item">
+                  <span className="specialty-icon">📊</span>
+                  <span>Data Science</span>
+                </div>
+                <div className="specialty-item">
+                  <span className="specialty-icon">⚙️</span>
+                  <span>System Design</span>
+                </div>
+                <div className="specialty-item">
+                  <span className="specialty-icon">☁️</span>
+                  <span>Cloud Native</span>
+                </div>
+              </div>
+
+              {/* Buttons Section */}
+              <div className="hero-buttons-section">
+                {/* Enhanced CTA Buttons */}
+                <div className="hero-cta-buttons">
+                  <a
+                    href={profile.personal.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hero-btn-main"
+                  >
+                    <span>View My Work</span>
+                    <svg className="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+
+                {/* AI Chat Highlight */}
+                <div className="hero-ai-chat-teaser">
+                  <button 
+                    onClick={handleAIChatClick}
+                    className="ai-chat-badge"
+                    type="button"
+                    aria-label="Open AI Chat"
+                  >
+                    <span className="ai-chat-icon">🤖</span>
+                    <span>Try My AI Assistant</span>
+                    <svg className="ai-chat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* Closing code comment */}
+              <div className="hero-outro">
+                <p className="syntax-comment">{`}`}</p>
+              </div>
             </div>
           </div>
         </div>

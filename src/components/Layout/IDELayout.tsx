@@ -167,6 +167,16 @@ export function IDELayout() {
     }
   }, [isMobileMenuOpen]);
 
+  // Listen for AI Chat open event from Hero
+  useEffect(() => {
+    const handleOpenAIChat = () => {
+      setIsAIChatOpen(true);
+    };
+    
+    window.addEventListener("openAIChat", handleOpenAIChat);
+    return () => window.removeEventListener("openAIChat", handleOpenAIChat);
+  }, []);
+
   const openTab = useCallback(
     (item: FileTreeItem) => {
       if (item.type === "file" && item.component) {
