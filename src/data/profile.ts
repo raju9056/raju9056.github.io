@@ -74,7 +74,7 @@ export interface Profile {
 export const profile: Profile = {
   personal: {
     name: "Raju Yallappa",
-    title: "Senior Software Engineer | AI Engineer | Data Scientist",
+    title: "Senior Software Engineer | AI/ML Engineer | Data & ML Systems",
     location: "USA (Open to Relocation)",
     email: "rajuyallappa9056@gmail.com",
     phone: "316259xxxx",
@@ -83,7 +83,7 @@ export const profile: Profile = {
     availableForWork: true,
   },
 
-  summary: `Senior Software Engineer and Data Scientist with 6+ years building intelligent, scalable systems that bridge software engineering excellence with advanced data solutions. Expertise spans full-stack development, LLM/AI applications, enterprise data platforms (Azure, AWS), and cloud architecture. Passionate about creating elegant solutions to complex problems using cutting-edge technologies in AI, machine learning, and distributed systems.`,
+  summary: `Senior Software Engineer | AI/ML Engineer | Data & ML Systems with 8+ years building production-grade machine learning systems, real-time and batch data pipelines, and operational decisioning platforms. I specialize in AI/ML lifecycle engineering, feature engineering, data quality, model deployment, monitoring, and cloud-native analytics on GCP, Azure, and AWS. My work emphasizes fraud and risk-oriented intelligence, scalable ML operations, and trusted decision support for business stakeholders.`,
 
   skillCategories: [
     {
@@ -93,6 +93,7 @@ export const profile: Profile = {
     {
       category: "Cloud & Data Platforms",
       items: [
+        "GCP (BigQuery, Pub/Sub, Dataflow, Vertex AI)",
         "Azure (ADF, Databricks, EventHub, ADLS, Functions, Blob Storage, Power BI)",
         "AWS (S3, Lambda, ECS, Redshift)",
       ],
@@ -100,27 +101,35 @@ export const profile: Profile = {
     {
       category: "Data Engineering & Analytics",
       items: [
-        "ETL/ELT pipelines",
-        "Data Warehousing",
-        "Data Lake Architecture",
-        "Snowflake",
-        "PostgreSQL",
-        "MongoDB",
-        "Cassandra",
+        "Streaming & batch pipeline design",
+        "Feature engineering / reusable feature stores",
+        "Large-scale data preparation",
+        "Schema governance, deduplication, lineage, validation",
+        "Anomaly detection & risk scoring",
+      ],
+    },
+    {
+      category: "AI & Machine Learning",
+      items: [
+        "ML model deployment & monitoring",
+        "Risk scoring / fraud detection",
+        "MLOps and CI/CD for ML lifecycles",
+        "Graph analytics, entity linking, anomaly detection",
       ],
     },
     {
       category: "Tools & Frameworks",
       items: [
         "Spark",
-        "Kafka",
+        "Apache Beam",
+        "TensorFlow",
+        "PyTorch",
         "FastAPI",
         "Flask",
-        "Spring Boot",
+        "Kubeflow",
         "Terraform",
         "GitHub Actions",
         "Jenkins",
-        "Azure DevOps",
       ],
     },
     {
@@ -132,16 +141,13 @@ export const profile: Profile = {
       items: ["Power BI", "Tableau", "Grafana"],
     },
     {
-      category: "Frontend (Familiar)",
-      items: ["React", "Redux", "TypeScript", "HTML5", "CSS3", "Tailwind CSS"],
-    },
-    {
       category: "Security & Governance",
       items: [
+        "Audit & compliance support",
+        "Model governance",
         "IAM",
         "RBAC",
         "KMS",
-        "Data Privacy (Informatica, Axon, EDC – familiar)",
       ],
     },
     {
@@ -158,13 +164,13 @@ export const profile: Profile = {
       period: "06/2022 – present",
       current: true,
       highlights: [
-        "Designed and implemented data ingestion and transformation pipelines using Azure Data Factory, Databricks, and Python, enabling analytics for multimodal datasets (image, text, sensor data).",
-        "Built streaming data workflows with Kafka, EventHub, and AWS Lambda, achieving sub-second ingestion latency and 99.9% availability.",
-        "Migrated legacy pipelines to Azure Data Lake Storage (ADLS) and Kubernetes microservices, improving scalability and governance compliance.",
-        "Developed monitoring dashboards (Grafana, Prometheus) for ETL performance and data quality metrics, reducing incident resolution time by 35%.",
-        "Implemented CI/CD pipelines using Azure DevOps, automating testing, deployment, and infrastructure provisioning.",
-        "Partnered with data governance and product teams to ensure secure data sharing, privacy, and compliance across analytics environments.",
-        "Mentored junior engineers in best practices for data modeling, Spark optimization, and DevOps automation.",
+        "Designed production-grade ML and analytics pipelines combining streaming events and batch processing with Azure Data Factory, Databricks, Kafka, and Python.",
+        "Developed reusable feature engineering pipelines and operational feature definitions for online/offline risk scoring and decisioning.",
+        "Integrated model outputs into low-latency decision services and deployed model serving components in Kubernetes for real-time business workflows.",
+        "Improved data quality and reliability through schema governance, deduplication, lineage tracking, and automated validation dashboards.",
+        "Implemented MLOps automation for model training, deployment, versioning, and infrastructure provisioning using Azure DevOps.",
+        "Collaborated with product, risk, and governance stakeholders to translate business rules into model improvements and audit-ready controls.",
+        "Mentored engineers on scalable data engineering, feature store design, and cloud ML best practices.",
       ],
       technologies: [
         "Azure Data Factory",
@@ -224,6 +230,25 @@ export const profile: Profile = {
         "Docker",
         "Kubernetes",
         "Grafana",
+      ],
+    },
+    {
+      company: "Bank of America",
+      location: "Bengaluru, Karnataka, India",
+      role: "Software Engineer Intern",
+      period: "12/2018 – 07/2019",
+      current: false,
+      highlights: [
+        "Contributed to on-site engineering efforts for banking workflows and internal software systems during an eight-month internship.",
+        "Supported data validation, process automation, and collaboration with cross-functional teams to improve application reliability and compliance readiness.",
+        "Gained practical exposure to enterprise banking operations and client authentication workflows in a regulated financial environment.",
+      ],
+      technologies: [
+        "Java",
+        "SQL",
+        "Python",
+        "Spring Boot",
+        "Jenkins",
       ],
     },
   ],

@@ -144,7 +144,7 @@ export function Experience() {
       <div className="mt-6 md:mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
         <div className="card text-center py-3 md:py-4">
           <div className="text-2xl md:text-3xl font-bold text-ide-accent">
-            6+
+            8+
           </div>
           <div className="text-xs md:text-sm text-ide-text-muted">
             Years Experience

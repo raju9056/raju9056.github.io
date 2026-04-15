@@ -89,7 +89,7 @@ function getFallbackResponse(question: string): string {
     lowerQuestion.includes("years") ||
     lowerQuestion.includes("work")
   ) {
-    return `I have 7+ years of experience as a Software Engineer, currently working as a Senior Software Engineer at AbbVie. My background spans Linux systems, embedded engineering, and open-source software. I've also worked at Rakuten and Bank of America.`;
+    return `I have 8+ years of experience as a Software Engineer, currently working as a Senior Software Engineer at AbbVie. My background includes AI/ML systems, data pipeline engineering, and cloud analytics across Azure, AWS, and GCP. I've also worked at Rakuten and Bank of America.`;
   }
 
   // Skills questions
